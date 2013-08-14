@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-#import "ArticleTableViewController.h"
+#import "ArticlesTableViewController.h"
 
 #import "Article.h"
 
@@ -37,7 +37,7 @@
     if ([self.urlTextField.text length] > 0)
     {
         //Open a new view with the url
-        ArticleTableViewController *articleTableViewController = [[ArticleTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        ArticlesTableViewController *articleTableViewController = [[ArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain];
         articleTableViewController.articlesURLString = self.urlTextField.text;
         [self.navigationController pushViewController:articleTableViewController animated:YES];
     }

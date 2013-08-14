@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		52575BFE17BB9CEB009B2DBF /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575BFD17BB9CEB009B2DBF /* Article.m */; };
-		52575C0217BB9F7E009B2DBF /* ArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575C0017BB9F7E009B2DBF /* ArticleTableViewController.m */; };
-		52575C0317BB9F7E009B2DBF /* ArticleTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52575C0117BB9F7E009B2DBF /* ArticleTableViewController.xib */; };
+		52575C0217BB9F7E009B2DBF /* ArticlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575C0017BB9F7E009B2DBF /* ArticlesTableViewController.m */; };
+		52575C0317BB9F7E009B2DBF /* ArticlesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52575C0117BB9F7E009B2DBF /* ArticlesTableViewController.xib */; };
 		52575C4117BBB527009B2DBF /* ArticleDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575C3F17BBB527009B2DBF /* ArticleDetailsViewController.m */; };
 		52575C4217BBB527009B2DBF /* ArticleDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52575C4017BBB527009B2DBF /* ArticleDetailsViewController.xib */; };
+		52575C4617BBD510009B2DBF /* NewArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575C4417BBD510009B2DBF /* NewArticleViewController.m */; };
+		52575C4717BBD510009B2DBF /* NewArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52575C4517BBD510009B2DBF /* NewArticleViewController.xib */; };
 		52D7317017BB97C0009332CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D7316F17BB97C0009332CC /* UIKit.framework */; };
 		52D7317217BB97C0009332CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D7317117BB97C0009332CC /* Foundation.framework */; };
 		52D7317417BB97C0009332CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D7317317BB97C0009332CC /* CoreGraphics.framework */; };
@@ -28,12 +30,15 @@
 /* Begin PBXFileReference section */
 		52575BFC17BB9CEB009B2DBF /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		52575BFD17BB9CEB009B2DBF /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
-		52575BFF17BB9F7E009B2DBF /* ArticleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewController.h; sourceTree = "<group>"; };
-		52575C0017BB9F7E009B2DBF /* ArticleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewController.m; sourceTree = "<group>"; };
-		52575C0117BB9F7E009B2DBF /* ArticleTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewController.xib; sourceTree = "<group>"; };
+		52575BFF17BB9F7E009B2DBF /* ArticlesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesTableViewController.h; sourceTree = "<group>"; };
+		52575C0017BB9F7E009B2DBF /* ArticlesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesTableViewController.m; sourceTree = "<group>"; };
+		52575C0117BB9F7E009B2DBF /* ArticlesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticlesTableViewController.xib; sourceTree = "<group>"; };
 		52575C3E17BBB527009B2DBF /* ArticleDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailsViewController.h; sourceTree = "<group>"; };
 		52575C3F17BBB527009B2DBF /* ArticleDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailsViewController.m; sourceTree = "<group>"; };
 		52575C4017BBB527009B2DBF /* ArticleDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleDetailsViewController.xib; sourceTree = "<group>"; };
+		52575C4317BBD510009B2DBF /* NewArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticleViewController.h; sourceTree = "<group>"; };
+		52575C4417BBD510009B2DBF /* NewArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticleViewController.m; sourceTree = "<group>"; };
+		52575C4517BBD510009B2DBF /* NewArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewArticleViewController.xib; sourceTree = "<group>"; };
 		52D7316C17BB97C0009332CC /* MakersNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakersNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D7316F17BB97C0009332CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52D7317117BB97C0009332CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,12 +108,15 @@
 				52D7318717BB97C0009332CC /* MainViewController.h */,
 				52D7318817BB97C0009332CC /* MainViewController.m */,
 				52D7318A17BB97C0009332CC /* MainViewController.xib */,
-				52575BFF17BB9F7E009B2DBF /* ArticleTableViewController.h */,
-				52575C0017BB9F7E009B2DBF /* ArticleTableViewController.m */,
-				52575C0117BB9F7E009B2DBF /* ArticleTableViewController.xib */,
+				52575BFF17BB9F7E009B2DBF /* ArticlesTableViewController.h */,
+				52575C0017BB9F7E009B2DBF /* ArticlesTableViewController.m */,
+				52575C0117BB9F7E009B2DBF /* ArticlesTableViewController.xib */,
 				52575C3E17BBB527009B2DBF /* ArticleDetailsViewController.h */,
 				52575C3F17BBB527009B2DBF /* ArticleDetailsViewController.m */,
 				52575C4017BBB527009B2DBF /* ArticleDetailsViewController.xib */,
+				52575C4317BBD510009B2DBF /* NewArticleViewController.h */,
+				52575C4417BBD510009B2DBF /* NewArticleViewController.m */,
+				52575C4517BBD510009B2DBF /* NewArticleViewController.xib */,
 				52D7317617BB97C0009332CC /* Supporting Files */,
 			);
 			path = MakersNewsApp;
@@ -184,8 +192,9 @@
 				52D7318417BB97C0009332CC /* Default@2x.png in Resources */,
 				52D7318617BB97C0009332CC /* Default-568h@2x.png in Resources */,
 				52D7318C17BB97C0009332CC /* MainViewController.xib in Resources */,
-				52575C0317BB9F7E009B2DBF /* ArticleTableViewController.xib in Resources */,
+				52575C0317BB9F7E009B2DBF /* ArticlesTableViewController.xib in Resources */,
 				52575C4217BBB527009B2DBF /* ArticleDetailsViewController.xib in Resources */,
+				52575C4717BBD510009B2DBF /* NewArticleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +209,9 @@
 				52D7318017BB97C0009332CC /* AppDelegate.m in Sources */,
 				52D7318917BB97C0009332CC /* MainViewController.m in Sources */,
 				52575BFE17BB9CEB009B2DBF /* Article.m in Sources */,
-				52575C0217BB9F7E009B2DBF /* ArticleTableViewController.m in Sources */,
+				52575C0217BB9F7E009B2DBF /* ArticlesTableViewController.m in Sources */,
 				52575C4117BBB527009B2DBF /* ArticleDetailsViewController.m in Sources */,
+				52575C4617BBD510009B2DBF /* NewArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
