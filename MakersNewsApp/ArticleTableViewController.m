@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSMutableData *dataReceived;
 @property (nonatomic, retain) NSArray *articlesArray;
+@property (nonatomic, retain) UIRefreshControl *myRefreshControl;
 
 @end
 
@@ -34,6 +35,22 @@
 {
     [super viewDidLoad];
     
+    //Add the refrehsing control
+    self.myRefreshControl = [[UIRefreshControl alloc] init];
+    [self.myRefreshControl addTarget:self action:@selector(refreshControlChanged) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = self.myRefreshControl;
+    
+    [self requestArticles];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)requestArticles
+{
     //Start url request
     NSURL *url = [NSURL URLWithString:self.articlesURLString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
@@ -41,10 +58,9 @@
     [connection start];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)refreshControlChanged
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self requestArticles];
 }
 
 #pragma mark - NSURLConnection Delegate
@@ -66,6 +82,11 @@
     NSArray *jsonReceivedArray = [NSJSONSerialization JSONObjectWithData:self.dataReceived options:0 error:&error];
     
     [self parseReceivedJSON:jsonReceivedArray];
+    
+    if (self.myRefreshControl && [self.myRefreshControl isRefreshing])
+    {
+        [self.myRefreshControl endRefreshing];
+    }
 }
 
 #pragma mark - Parsing JSON Methods
