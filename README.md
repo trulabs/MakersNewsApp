@@ -1,4 +1,4 @@
--MakersNewsApp
+MakersNewsApp
 ==============
 
  MakersNewsApp
