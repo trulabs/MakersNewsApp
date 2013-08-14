@@ -8,9 +8,11 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()
+#import "ArticleTableViewController.h"
 
-@property (nonatomic, retain) NSMutableData *dataReceived;
+#import "Article.h"
+
+@interface MainViewController ()
 
 @end
 
@@ -32,34 +34,13 @@
 
 -(IBAction)receiveNewsPressed:(id)sender
 {
-    //Start url request
-    NSString *urlString = self.urlTextField.text;
-    
-    if ([urlString length] > 0)
+    if ([self.urlTextField.text length] > 0)
     {
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        [connection start];
+        //Open a new view with the url
+        ArticleTableViewController *articleTableViewController = [[ArticleTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        articleTableViewController.articlesURLString = self.urlTextField.text;
+        [self.navigationController pushViewController:articleTableViewController animated:YES];
     }
-}
-
-#pragma mark - NSURLConnection Delegate
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    self.dataReceived = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.dataReceived appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSError *error = nil;
-    NSArray *jsonReceived = [NSJSONSerialization JSONObjectWithData:self.dataReceived options:0 error:&error];
-    
 }
 
 @end
