@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface MKADArticleDetailsViewController : UIViewController
+@interface MKADArticleDetailsViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *publishedDateLabel;
 @property (nonatomic, retain) IBOutlet UITextView *bodyTextView;
+
+-(IBAction)shareButtonPressed:(id)sender;
 
 @end

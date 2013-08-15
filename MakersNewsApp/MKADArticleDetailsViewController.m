@@ -8,6 +8,8 @@
 
 #import "MKADArticleDetailsViewController.h"
 
+
+
 @interface MKADArticleDetailsViewController ()
 
 @end
@@ -33,6 +35,34 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)shareButtonPressed:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Mail", nil];
+    [actionSheet showInView:self.view];
+}
+
+
+#pragma mark - UIActionSheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        //Open email composer
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setSubject:self.titleLabel.text];
+        [mail setMessageBody:self.bodyTextView.text isHTML:NO];
+        [self presentViewController:mail animated:YES completion:nil];
+    }
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
