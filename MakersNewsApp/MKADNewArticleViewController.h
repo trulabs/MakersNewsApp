@@ -10,8 +10,8 @@
 
 @interface MKADNewArticleViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITextField *titleTextField;
-@property (nonatomic, retain) IBOutlet UITextView *bodyTextView;
+@property (nonatomic, strong) IBOutlet UITextField *titleTextField;
+@property (nonatomic, strong) IBOutlet UITextView *bodyTextView;
 
 
 -(IBAction)sendArticlePressed:(id)sender;

@@ -12,7 +12,7 @@ extern NSString * const MakersNewsURLKey;
 
 @interface MKADMainViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITextField *urlTextField;
+@property (nonatomic, strong) IBOutlet UITextField *urlTextField;
 
 -(IBAction)receiveNewsPressed:(id)sender;
 

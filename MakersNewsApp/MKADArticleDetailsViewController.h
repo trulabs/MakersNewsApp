@@ -11,9 +11,9 @@
 
 @interface MKADArticleDetailsViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *publishedDateLabel;
-@property (nonatomic, retain) IBOutlet UITextView *bodyTextView;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *publishedDateLabel;
+@property (nonatomic, strong) IBOutlet UITextView *bodyTextView;
 
 -(IBAction)shareButtonPressed:(id)sender;
 

@@ -15,11 +15,11 @@
 
 @interface MKADArticlesTableViewController ()
 
-@property (nonatomic, retain) NSString *articlesURLString;
-@property (nonatomic, retain) NSMutableData *dataReceived;
-@property (nonatomic, retain) NSArray *articles;
-@property (nonatomic, retain) UIRefreshControl *myRefreshControl;
-@property (nonatomic, retain) NSMutableArray *filteredResults;
+@property (nonatomic, strong) NSString *articlesURLString;
+@property (nonatomic, strong) NSMutableData *dataReceived;
+@property (nonatomic, strong) NSArray *articles;
+@property (nonatomic, strong) UIRefreshControl *myRefreshControl;
+@property (nonatomic, strong) NSMutableArray *filteredResults;
 
 @end
 
