@@ -15,6 +15,7 @@
 
 @interface MKADArticlesTableViewController ()
 
+@property (nonatomic, retain) NSString *articlesURLString;
 @property (nonatomic, retain) NSMutableData *dataReceived;
 @property (nonatomic, retain) NSArray *articles;
 @property (nonatomic, retain) UIRefreshControl *myRefreshControl;
@@ -24,11 +25,12 @@
 
 @implementation MKADArticlesTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style URLString:(NSString *)urlString
 {
     self = [super initWithStyle:style];
     if (self) {
         self.title = @"Articles";
+        self.articlesURLString = urlString;
     }
     return self;
 }

@@ -10,6 +10,6 @@
 
 @interface MKADArticlesTableViewController : UITableViewController <UISearchDisplayDelegate>
 
-@property (nonatomic, retain) NSString *articlesURLString;
+- (id)initWithStyle:(UITableViewStyle)style URLString:(NSString *)urlString;
 
 @end
