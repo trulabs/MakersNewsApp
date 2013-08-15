@@ -12,6 +12,8 @@
 
 #import "MKADArticle.h"
 
+NSString * const MakersNewsURLKey = @"MakersNewsURLKey";
+
 @interface MKADMainViewController ()
 
 @end
@@ -21,7 +23,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	NSString *makersURL = [[NSUserDefaults standardUserDefaults] objectForKey:MakersNewsURLKey];
+	if ([makersURL length])
+	{
+		[self.urlTextField setText:makersURL];
+	}
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,6 +42,9 @@
 {
     if ([self.urlTextField.text length] > 0)
     {
+		[[NSUserDefaults standardUserDefaults] setObject:[self.urlTextField text] forKey:MakersNewsURLKey];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+		
         //Open a new view with the url
         MKADArticlesTableViewController *articleTableViewController = [[MKADArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain];
         articleTableViewController.articlesURLString = self.urlTextField.text;
