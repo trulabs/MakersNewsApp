@@ -72,7 +72,7 @@
 
 -(void)openNewArticleView
 {
-    MKADNewArticleViewController *newArticleViewController = [[MKADNewArticleViewController alloc] initWithNibName:@"NewArticleViewController" bundle:nil];
+    MKADNewArticleViewController *newArticleViewController = [[MKADNewArticleViewController alloc] initWithNibName:@"MKADNewArticleViewController" bundle:nil];
     [self.navigationController pushViewController:newArticleViewController animated:YES];
 }
 
@@ -185,7 +185,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MKADArticleDetailsViewController *detailViewController = [[MKADArticleDetailsViewController alloc] initWithNibName:@"ArticleDetailsViewController" bundle:nil];
+    MKADArticleDetailsViewController *detailViewController = [[MKADArticleDetailsViewController alloc] initWithNibName:@"MKADArticleDetailsViewController" bundle:nil];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
