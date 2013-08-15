@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSMutableData *dataReceived;
 @property (nonatomic, retain) NSArray *articles;
 @property (nonatomic, retain) UIRefreshControl *myRefreshControl;
+@property (nonatomic, retain) NSMutableArray *filteredResults;
 
 @end
 
@@ -79,6 +80,24 @@
 -(void)refreshControlChanged
 {
     [self requestArticles];
+}
+
+#pragma mark - Search Delegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    self.filteredResults = [[NSMutableArray alloc] init];
+    
+    //Filter the results
+    for (MKADArticle *article in self.articles)
+    {
+        if ([article.title rangeOfString:searchString].location != NSNotFound)
+        {
+            [self.filteredResults addObject:article];
+        }
+    }
+    
+    return YES;
 }
 
 #pragma mark - NSURLConnection Delegate
@@ -162,7 +181,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.articles count];
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+        return [self.filteredResults count];
+    else
+        return [self.articles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,7 +195,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    MKADArticle *article = [self.articles objectAtIndex:indexPath.row];
+    MKADArticle *article = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        article = [self.filteredResults objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        article = [self.articles objectAtIndex:indexPath.row];
+    }
+    
     cell.textLabel.text = article.title;
     cell.detailTextLabel.text = article.body;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -192,7 +224,17 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    MKADArticle *selectedArticle = [self.articles objectAtIndex:indexPath.row];
+    MKADArticle *selectedArticle = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        selectedArticle = [self.filteredResults objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        selectedArticle = [self.articles objectAtIndex:indexPath.row];
+    }
+    
     detailViewController.bodyTextView.text = selectedArticle.body;
     detailViewController.titleLabel.text = selectedArticle.title;
     detailViewController.publishedDateLabel.text = [dateFormatter stringFromDate:selectedArticle.publishedDate];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MKADArticlesTableViewController : UITableViewController
+@interface MKADArticlesTableViewController : UITableViewController <UISearchDisplayDelegate>
 
 @property (nonatomic, retain) NSString *articlesURLString;
 
