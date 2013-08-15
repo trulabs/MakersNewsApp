@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class MainViewController;
+@class MKADMainViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface MKADAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) MainViewController *viewController;
+@property (strong, nonatomic) MKADMainViewController *viewController;
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Truphone. All rights reserved.
 //
 
-#import "NewArticleViewController.h"
+#import "MKADNewArticleViewController.h"
 
-@interface NewArticleViewController ()
+@interface MKADNewArticleViewController ()
 
 @end
 
-@implementation NewArticleViewController
+@implementation MKADNewArticleViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,8 +50,8 @@
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:jsonData];
             
-            NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-            [conn start];
+            NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            [connection start];
         }
     }
 

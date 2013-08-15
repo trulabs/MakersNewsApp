@@ -6,22 +6,22 @@
 //  Copyright (c) 2013 Truphone. All rights reserved.
 //
 
-#import "ArticlesTableViewController.h"
+#import "MKADArticlesTableViewController.h"
 
-#import "ArticleDetailsViewController.h"
-#import "NewArticleViewController.h"
+#import "MKADArticleDetailsViewController.h"
+#import "MKADNewArticleViewController.h"
 
-#import "Article.h"
+#import "MKADArticle.h"
 
-@interface ArticlesTableViewController ()
+@interface MKADArticlesTableViewController ()
 
 @property (nonatomic, retain) NSMutableData *dataReceived;
-@property (nonatomic, retain) NSArray *articlesArray;
+@property (nonatomic, retain) NSArray *articles;
 @property (nonatomic, retain) UIRefreshControl *myRefreshControl;
 
 @end
 
-@implementation ArticlesTableViewController
+@implementation MKADArticlesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,8 +62,8 @@
 - (void)requestArticles
 {
     //Start url request
-    NSURL *url = [NSURL URLWithString:self.articlesURLString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURL *URL = [NSURL URLWithString:self.articlesURLString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:URL];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection start];
 }
@@ -72,7 +72,7 @@
 
 -(void)openNewArticleView
 {
-    NewArticleViewController *newArticleViewController = [[NewArticleViewController alloc] initWithNibName:@"NewArticleViewController" bundle:nil];
+    MKADNewArticleViewController *newArticleViewController = [[MKADNewArticleViewController alloc] initWithNibName:@"NewArticleViewController" bundle:nil];
     [self.navigationController pushViewController:newArticleViewController animated:YES];
 }
 
@@ -105,6 +105,8 @@
     {
         [self.myRefreshControl endRefreshing];
     }
+    
+    self.dataReceived = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -116,6 +118,8 @@
     {
         [self.myRefreshControl endRefreshing];
     }
+    
+    self.dataReceived = nil;
 }
 
 #pragma mark - Parsing JSON Methods
@@ -126,17 +130,23 @@
     NSMutableArray *articlesMutableArray = [[NSMutableArray alloc] initWithCapacity:[jsonReceivedArray count]];
     for (NSDictionary *dictionaryFromJSON in jsonReceivedArray)
     {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        [dateFormatter setLocale:locale];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
         NSLog(@"Article Received: %@", dictionaryFromJSON);
-        Article *article = [[Article alloc] init];
+        MKADArticle *article = [[MKADArticle alloc] init];
         article.body            = [dictionaryFromJSON objectForKey:@"body"];
-        article.idArticle       = [dictionaryFromJSON objectForKey:@"id"];
+        article.numericIdentifier  = [dictionaryFromJSON objectForKey:@"id"];
         article.title           = [dictionaryFromJSON objectForKey:@"title"];
-        article.publishedDate   = [dictionaryFromJSON objectForKey:@"published"];
-        article.url             = [dictionaryFromJSON objectForKey:@"url"];
+        article.publishedDate   = [dateFormatter dateFromString:[dictionaryFromJSON objectForKey:@"published"]];
+        article.URLPath         = [dictionaryFromJSON objectForKey:@"url"];
         [articlesMutableArray addObject:article];
     }
     
-    self.articlesArray = [NSArray arrayWithArray:articlesMutableArray];
+    self.articles = [NSArray arrayWithArray:articlesMutableArray];
     [self.tableView reloadData];
 }
 
@@ -152,7 +162,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.articlesArray count];
+    return [self.articles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,11 +170,13 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    Article *selectedArticle = [self.articlesArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = selectedArticle.title;
+    MKADArticle *article = [self.articles objectAtIndex:indexPath.row];
+    cell.textLabel.text = article.title;
+    cell.detailTextLabel.text = article.body;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -173,13 +185,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ArticleDetailsViewController *detailViewController = [[ArticleDetailsViewController alloc] initWithNibName:@"ArticleDetailsViewController" bundle:nil];
+    MKADArticleDetailsViewController *detailViewController = [[MKADArticleDetailsViewController alloc] initWithNibName:@"ArticleDetailsViewController" bundle:nil];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
-    Article *selectedArticle = [self.articlesArray objectAtIndex:indexPath.row];
-    detailViewController.bodyView.text = selectedArticle.body;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    MKADArticle *selectedArticle = [self.articles objectAtIndex:indexPath.row];
+    detailViewController.bodyTextView.text = selectedArticle.body;
     detailViewController.titleLabel.text = selectedArticle.title;
-    detailViewController.publishedDateLabel.text = selectedArticle.publishedDate;
+    detailViewController.publishedDateLabel.text = [dateFormatter stringFromDate:selectedArticle.publishedDate];
 }
 
 @end

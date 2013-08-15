@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Truphone. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "MKADAppDelegate.h"
 
-#import "MainViewController.h"
+#import "MKADMainViewController.h"
 
-@implementation AppDelegate
+@implementation MKADAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    self.viewController = [[MKADMainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = mainNavigationController;
     [self.window makeKeyAndVisible];

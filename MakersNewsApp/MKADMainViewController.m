@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Truphone. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "MKADMainViewController.h"
 
-#import "ArticlesTableViewController.h"
+#import "MKADArticlesTableViewController.h"
 
-#import "Article.h"
+#import "MKADArticle.h"
 
-@interface MainViewController ()
+@interface MKADMainViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation MKADMainViewController
 
 - (void)viewDidLoad
 {
@@ -37,7 +37,7 @@
     if ([self.urlTextField.text length] > 0)
     {
         //Open a new view with the url
-        ArticlesTableViewController *articleTableViewController = [[ArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        MKADArticlesTableViewController *articleTableViewController = [[MKADArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain];
         articleTableViewController.articlesURLString = self.urlTextField.text;
         [self.navigationController pushViewController:articleTableViewController animated:YES];
     }

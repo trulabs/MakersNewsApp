@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Truphone. All rights reserved.
 //
 
-#import "ArticleDetailsViewController.h"
+#import "MKADArticleDetailsViewController.h"
 
-@interface ArticleDetailsViewController ()
+@interface MKADArticleDetailsViewController ()
 
 @end
 
-@implementation ArticleDetailsViewController
+@implementation MKADArticleDetailsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

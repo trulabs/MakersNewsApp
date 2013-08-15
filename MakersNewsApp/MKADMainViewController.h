@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@interface MKADMainViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITextField *urlTextField;
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ArticlesTableViewController : UITableViewController
+@interface MKADArticlesTableViewController : UITableViewController
 
 @property (nonatomic, retain) NSString *articlesURLString;
 

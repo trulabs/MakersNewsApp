@@ -1,5 +1,5 @@
 //
-//  NewArticleViewController.h
+//  ArticleDetailsViewController.h
 //  MakersNewsApp
 //
 //  Created by Antonio Martinez on 14/08/2013.
@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewArticleViewController : UIViewController
+@interface MKADArticleDetailsViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITextField *titleTextField;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *publishedDateLabel;
 @property (nonatomic, retain) IBOutlet UITextView *bodyTextView;
-
-
--(IBAction)sendArticlePressed:(id)sender;
 
 @end
