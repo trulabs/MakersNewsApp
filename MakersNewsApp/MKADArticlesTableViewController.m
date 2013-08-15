@@ -74,7 +74,7 @@
 -(void)openNewArticleView
 {
     MKADNewArticleViewController *newArticleViewController = [[MKADNewArticleViewController alloc] initWithNibName:@"MKADNewArticleViewController" bundle:nil];
-    [self.navigationController pushViewController:newArticleViewController animated:YES];
+    [self presentViewController:newArticleViewController animated:YES completion:nil];
 }
 
 -(void)refreshControlChanged

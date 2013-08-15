@@ -57,6 +57,11 @@
 
 }
 
+-(IBAction)cancelPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - NSURLConnection Delegate
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
