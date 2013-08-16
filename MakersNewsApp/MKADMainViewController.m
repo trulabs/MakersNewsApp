@@ -46,8 +46,7 @@ NSString * const MakersNewsURLKey = @"MakersNewsURLKey";
 		[[NSUserDefaults standardUserDefaults] synchronize];
 		
         //Open a new view with the url
-        MKADArticlesTableViewController *articleTableViewController = [[MKADArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        articleTableViewController.articlesURLString = self.urlTextField.text;
+        MKADArticlesTableViewController *articleTableViewController = [[MKADArticlesTableViewController alloc] initWithStyle:UITableViewStylePlain URLString:self.urlTextField.text];
         [self.navigationController pushViewController:articleTableViewController animated:YES];
     }
 }

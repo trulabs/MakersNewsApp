@@ -10,10 +10,10 @@
 
 @interface MKADArticle : NSObject
 
-@property (nonatomic, retain) NSNumber *numericIdentifier;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *body;
-@property (nonatomic, retain) NSDate *publishedDate;
-@property (nonatomic, retain) NSString *URLPath;
+@property (nonatomic, strong) NSNumber *numericIdentifier;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *body;
+@property (nonatomic, strong) NSDate *publishedDate;
+@property (nonatomic, strong) NSString *URLPath;
 
 @end
